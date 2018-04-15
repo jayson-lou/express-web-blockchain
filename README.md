@@ -1,6 +1,8 @@
 
 
-# This is to demonstrate how the blockchain works with a web application. 
+# Little blockchain web application
+
+This is to demonstrate how the blockchain works with a web application. 
 
 
 ## Usage
