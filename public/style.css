@@ -1,0 +1,73 @@
+.header
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 16px;
+    COLOR: #0a2972;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.entrytext
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12px;
+    COLOR: #404040;
+    LINE-HEIGHT: 16px;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    FONT-VARIANT: normal
+}
+.bodytext
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 12px;
+    COLOR: #404040;
+    LINE-HEIGHT: 16px;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    FONT-VARIANT: normal
+}
+.copyright
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 9px;
+    COLOR: #666666;
+    LINE-HEIGHT: normal;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.footermenu
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10px;
+    COLOR: #666666;
+    LINE-HEIGHT: normal;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.bodyheader
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12px;
+    COLOR: #0a2972;
+    LINE-HEIGHT: 16px;
+    FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.links
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12px;
+    COLOR: #0a2972;
+    LINE-HEIGHT: 16px;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Arial, Helvetica, sans-serif;
+    TEXT-DECORATION: underline
+}
+.chevron
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 8pt;
+    COLOR: #0a2972;
+    POSITION: relative;
+   
+}
+.blue_arrow
+{
+    BACKGROUND: url(../images/blue_arrow.gif) no-repeat right top;
+    POSITION: relative;
+    TOP: 4pt
+}

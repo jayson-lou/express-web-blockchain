@@ -1,0 +1,18 @@
+{
+  "name": "ExpressWeb_BlockChain",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "devstart": "nodemon node app.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.8",
+    "express": "3.2.6",
+     "mongodb": "^3.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}

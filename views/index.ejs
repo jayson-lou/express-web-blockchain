@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Express WEB APP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Express WEB!</h1>
+
+  
+
+  
+  <ul>
+  <% for(var i=0; i<pending_transaction.length; i++) {%>
+    <li>
+      <%= pending_transaction[i].sourceAcct %>
+      <%= pending_transaction[i].targetAcct %>
+      <%= pending_transaction[i].amount %>
+    </li>
+  <% } %>
+  </ul> 
+
+    <h2>Create a transaction</h2>
+
+  <form action="/create_transaction" method="POST">
+    <input type="text" placeholder="From Account" name="fromAcct"> <br>
+    <input type="text" placeholder="To Account" name="toAcct"><br>
+    <input type="text" placeholder="Amount" name="amount"><br>
+    <button type="submit">Create The Transaction</button>
+  </form>
+
+      <h2>Mine the blcok</h2>
+
+  <form action="/mine" method="POST"> 
+    <button type="submit">Mine the block</button>
+  </form>
+
+ 
+</body>
+</html>
