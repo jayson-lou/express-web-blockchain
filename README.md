@@ -6,12 +6,13 @@ This is to demonstrate how the blockchain works with a web application.
 
 
 ## Usage
+  - To play around with the demo, go to: http://ec2-34-217-113-112.us-west-2.compute.amazonaws.com:3000/
 
+## Developing
   - npm install
   - npm start (or "npm devstart" to start as deamon)
   - Launch "http://localhost:3000"
-
-## Developing
+  
   - Express Framework
   - EJS Template Engine
   - MongoDB (hosted on mLab)
