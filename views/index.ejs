@@ -2,38 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Express WEB APP</title>
+  <title>Jayson's Blockchain Demo</title>
   <link rel="stylesheet" href="style.css">
+  
 </head>
 <body>
-  <h1>Express WEB!</h1>
-
-  
-
-  
-  <ul>
-  <% for(var i=0; i<pending_transaction.length; i++) {%>
-    <li>
-      <%= pending_transaction[i].sourceAcct %>
-      <%= pending_transaction[i].targetAcct %>
-      <%= pending_transaction[i].amount %>
-    </li>
+  <h1>My Blockchain Demo!</h1>
+<p>
+  <b>List of Pending Transactions:</b>
+  <p></p>
+   <% for(var i=0; i<pending_transaction.length; i++) {%>
+      <textarea rows="5" cols="90" readonly>
+          Pending transaction # <%= i+1%> 
+          From account:  <%= pending_transaction[i].sourceAcct %> 
+          To account: <%= pending_transaction[i].targetAcct %>
+          Ammount: <%= pending_transaction[i].amount %>
+      </textarea>
+      <br>
+     
   <% } %>
-  </ul> 
+  
 
-    <h2>Create a transaction</h2>
+<p>
+    <b>Create a transaction</b> 
 
   <form action="/create_transaction" method="POST">
-    <input type="text" placeholder="From Account" name="fromAcct"> <br>
-    <input type="text" placeholder="To Account" name="toAcct"><br>
-    <input type="text" placeholder="Amount" name="amount"><br>
+    <input type="text" placeholder="From Account" name="fromAcct"> 
+    <input type="text" placeholder="To Account" name="toAcct">
+    <input type="text" placeholder="Amount" name="amount">
     <button type="submit">Create The Transaction</button>
   </form>
 
-      <h2>Mine the blcok</h2>
+  <p></p>
+      <b>Mine the blcok</b>
 
   <form action="/mine" method="POST"> 
-    <button type="submit">Mine the block</button>
+    <input type="text" placeholder="Minder's Account" name="minerAcct">  <button type="submit">Mine the block</button>
+  </form>
+
+  <p></p>
+      <b>Show the blcokchain</b>
+
+  <form action="/showchain" method="POST"> 
+     <button type="submit">Show me the blockchain</button>
   </form>
 
  
