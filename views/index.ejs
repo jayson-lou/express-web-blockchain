@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Jayson's Blockchain Demo</title>
-  <link rel="stylesheet" href="style.css">
-  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    body {
+        background: #555;
+    }
+    
+    .content {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 10px;
+    }
+    </style>
+      <title>Jayson's Blockchain Demo</title>
+   
 </head>
 <body>
+    <div class="content">
+
   <h1>My Blockchain Demo!</h1>
 <p>
   <b>List of Pending Transactions:</b>
@@ -25,7 +38,6 @@
 
 <p>
     <b>Create a transaction</b> 
-
   <form action="/create_transaction" method="POST">
     <input type="text" placeholder="From Account" name="fromAcct"> 
     <input type="text" placeholder="To Account" name="toAcct">
@@ -35,7 +47,6 @@
 
   <p></p>
       <b>Mine the blcok</b>
-
   <form action="/mine" method="POST"> 
     <input type="text" placeholder="Minder's Account" name="minerAcct">  <button type="submit">Mine the block</button>
   </form>
@@ -47,6 +58,6 @@
      <button type="submit">Show me the blockchain</button>
   </form>
 
- 
+</div>
 </body>
 </html>
