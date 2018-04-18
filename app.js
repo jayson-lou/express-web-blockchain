@@ -13,15 +13,16 @@ __DEBUG_MODE__ = true;
 
 var db;
 var myCrypto = new Blockchain();
-
-// Change the id/password/url to the mongodb. 
-MongoClient.connect('mongodb://admin:admin@ds157342.mlab.com:57342/expressweb_kaopaigu', (err, database) => {
+// var dbConnectionString = 'mongodb://admin:admin@ds157342.mlab.com:57342/expressweb_kaopaigu'; //TEST
+var dbConnectionString  = 'mongodb://admin:admin@127.0.0.1:27017/expressweb_kaopaigu'; // DEV
+MongoClient.connect(dbConnectionString, (err, database) => {
   if (err) return console.log(err);
   db = database.db('expressweb_kaopaigu');
   app.listen(process.env.PORT || 3000, () => {
     console.log('listening on 3000')
   })
 })
+
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -37,9 +38,13 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+var callback = function (err, data) {
+  if (err) return console.error(err);
+  console.log(data);
+};
+
 // Display all the pending trransactions
 app.get('/', function (req, res) {
-
   db.collection('blocks').count({}, function (error, numOfDocs) {
     if (error) return callback(error);
     if (numOfDocs === 0) {
@@ -50,9 +55,7 @@ app.get('/', function (req, res) {
     }
   });
 
-  db.collection('pending_transaction').find({}, {
-    _id: 0
-  }).toArray(function (err, results) {
+  db.collection('pending_transaction').find({}, {_id: 0}).toArray(function (err, results) {
     if (err) return console.log(err);
     res.render('index.ejs', {
       pending_transaction: results
@@ -85,7 +88,9 @@ app.post('/mine', function (req, res) {
     });
 
     myCrypto.setPendingTransactions(transactions);
-    myCrypto.minePendingTransactions(req.body.minerAcct);
+    myCrypto.setMiningDifficulty(Number(req.body.mineDifficulty)); 
+    console.log('Mining difficulty is set to ' + req.body.mineDifficulty );
+    myCrypto.minePendingTransactions(req.body.minerAcct, getLastBlockHash(dbConnectionString, callback));
 
     transIDs.forEach(function (item, index, array) {
       let myquery = {
@@ -114,9 +119,7 @@ app.post('/mine', function (req, res) {
 })
 
 app.post('/showchain', function (req, res) {
-  db.collection('blocks').find({}, {
-    _id: 0
-  }).toArray(function (err, results) {
+  db.collection('blocks').find({}, {_id: 0}).toArray(function (err, results) {
     if (err) return console.log(err);
     res.render('chain.ejs', {
       blocks: results
@@ -126,16 +129,27 @@ app.post('/showchain', function (req, res) {
 })
 
 function getNumOfDocs(collectionName, callback) {
-  MongoClient.connect("mongodb://admin:admin@ds157342.mlab.com:57342/expressweb_kaopaigu", function (error, db) {
+  MongoClient.connect(dbConnectionString, function (error, db) {
     if (error) return callback(error);
-
     db.collection(collectionName).count({}, function (error, numOfDocs) {
       if (error) return callback(error);
-
       db.close();
       callback(null, numOfDocs);
     });
   });
 }
+
+function getLastBlockHash(dbConnectionString, callback) {
+  MongoClient.connect(dbConnectionString, function (error, database) {
+    if (error) return callback(error);
+    db = database.db('expressweb_kaopaigu');
+    db.collection('blocks').find({}, { "_id": 0 }).toArray(function (err, results) {
+      if (err) return console.log(err);
+      console.log("Last hash is " + JSON.stringify(results[results.length - 1].hash));
+      return results[results.length - 1].hash;
+    }) 
+  });
+}
+
 
 module.exports = app;

@@ -9,6 +9,16 @@
 <body>
   <h1>My Blockchain Demo!</h1>
 <p>
+<p>
+    <b>Create a transaction</b> 
+
+  <form action="/create_transaction" method="POST">
+    <input type="text" placeholder="From Account" name="fromAcct"> 
+    <input type="text" placeholder="To Account" name="toAcct">
+    <input type="text" placeholder="Amount" name="amount">
+    <button type="submit">Create The Transaction</button>
+  </form>
+  <p></p>  <p></p>
   <b>List of Pending Transactions:</b>
   <p></p>
    <% for(var i=0; i<pending_transaction.length; i++) {%>
@@ -23,21 +33,21 @@
   <% } %>
   
 
-<p>
-    <b>Create a transaction</b> 
-
-  <form action="/create_transaction" method="POST">
-    <input type="text" placeholder="From Account" name="fromAcct"> 
-    <input type="text" placeholder="To Account" name="toAcct">
-    <input type="text" placeholder="Amount" name="amount">
-    <button type="submit">Create The Transaction</button>
-  </form>
-
   <p></p>
       <b>Mine the blcok</b>
 
   <form action="/mine" method="POST"> 
-    <input type="text" placeholder="Minder's Account" name="minerAcct">  <button type="submit">Mine the block</button>
+
+      Adjust Mine Difficulty: <select name="mineDifficulty">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+
+      &nbsp;&nbsp;&nbsp;&nbsp; <input type="text" placeholder="Minder's Account" name="minerAcct">  <button type="submit">Mine the block</button>
   </form>
 
   <p></p>

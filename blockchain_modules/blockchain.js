@@ -37,6 +37,28 @@ module.exports = class Blockchain
     setPendingTransactions(transactions) {
         this.pendingTransactions = transactions;
     }
+ 
+    setChain(chain) {
+        this.chain = chain;
+    }
+       
+    minePendingTransactionsWithGivenHash(minerAcct, previousHash){
+        __DEBUG_MODE__ && console.log('Miner ' + minerAcct + ' start to mine the pending transaction...');
+
+        let block = new Block(Date.now(), this.pendingTransactions, previousHash);
+        block.mineBlock(this.difficulty);
+
+        __DEBUG_MODE__ && console.log('Miner ' + minerAcct + ' successfully mined the block.');
+        // Add this block to the chain
+        this.chain.push(block);
+
+        this.pendingTransactions = [];
+        // Awarding the miner
+        __DEBUG_MODE__ && console.log('Miner ' + minerAcct + ' will get the reward ' + this.miningReward + '.');
+        this.pendingTransactions = [ new Transaction('000_blockchain_system_000', minerAcct, this.miningReward) ];
+    }
+
+
     
     minePendingTransactions(minerAcct){
         __DEBUG_MODE__ && console.log('Miner ' + minerAcct + ' start to mine the pending transaction...');
