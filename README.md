@@ -17,6 +17,8 @@ This project was implemented with **Node.js Express Framework** and **EJS Templa
  - Run `npm start` (or `npm devstart` to start as deamon) to start the application
  - Visit http://localhost:3000/
 
+Alternatively, you can use Docker to install the application on your machine. 
+
 ## Usage
 
 From the main screen, you can see all the pending transactions in the DB, you can also create new transaction, mine the pending tranactions or to display the current chain:
