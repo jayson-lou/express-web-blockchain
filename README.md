@@ -10,8 +10,7 @@ This is to demonstrate how the blockchain works with a web application. The foll
 
 ## Quick Start
 
-This project was implemented with Node.js Express Framework, EJS and MongoDB. 
-In order to run it locally:
+This project was implemented with **Node.js Express Framework** and **EJS Template Engine**. The data os stored in **MongoDB** (on mLab). In order to run it locally:
 
  - Download the project.
  - Run npm install to download dependencies
