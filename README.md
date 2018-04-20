@@ -16,8 +16,9 @@ This project was implemented with **Node.js Express Framework** and **EJS Templa
  - Run `npm install` to download dependencies
  - Run `npm start` (or `npm devstart` to start as deamon) to start the application
  - Visit http://localhost:3000/
-
+<!--
 Alternatively, you can use Docker to install the application on your machine. 
+-->
 
 ## Usage
 
