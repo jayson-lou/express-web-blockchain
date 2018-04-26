@@ -24,7 +24,7 @@ MongoClient.connect(dbConnectionString, (err, database) => {
 })
 
 
-// all environments
+// All environments
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({
@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 app.use(express.static('public'))
 
-// development only
+// Development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
@@ -43,7 +43,7 @@ var callback = function (err, data) {
   console.log(data);
 };
 
-// Display all the pending trransactions
+// Display all the pending transactions
 app.get('/', function (req, res) {
   db.collection('blocks').count({}, function (error, numOfDocs) {
     if (error) return callback(error);
@@ -63,6 +63,7 @@ app.get('/', function (req, res) {
   })
 })
 
+// Create and save transaction
 app.post('/create_transaction', function (req, res) {
   trans = new Transaction(req.body.fromAcct, req.body.toAcct, req.body.amount);
   db.collection('pending_transaction').save(trans, function (err, result) {
@@ -72,6 +73,7 @@ app.post('/create_transaction', function (req, res) {
   })
 })
 
+// Mine pending transactions according to set difficulty
 app.post('/mine', function (req, res) {
   let transactions = [];
   let transIDs = [];
@@ -139,6 +141,7 @@ function getNumOfDocs(collectionName, callback) {
   });
 }
 
+// Retrieve previous block's hash to save into new block
 function getLastBlockHash(dbConnectionString, callback) {
   MongoClient.connect(dbConnectionString, function (error, database) {
     if (error) return callback(error);
