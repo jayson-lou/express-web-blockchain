@@ -2,10 +2,10 @@
 
 # Little blockchain demonstration
 
-This is to demonstrate how the blockchain works with a web application. The following concepts are demonstrated:
+This is to demonstrate how the blockchain works with a web application. The following concepts are implemented:
  - Genesis block 
  - Hash calculation
- - Minging difficulty
+ - Mining difficulty
  - Proof of Work consensus
 
 ## Quick Start
